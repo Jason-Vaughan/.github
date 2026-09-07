@@ -22,6 +22,7 @@ We operate under a "Zero Trust" model to protect the integrity of our projects a
 hardware. We do not keep our security protocols a secret — transparency is our first line of
 defence, and knowing the rules up front is what lets a good contribution get in.
 
+<!-- BEGIN mirrored-security-rules -->
 1. **The Clean Room Reconstruction Standard (Dual-Key Review).** Pull requests from contributors we do not know are reviewed as **raw text diffs** through a strict dual-key process:
    - **First Pass (Macro Filter):** The Coordinator session performs the initial security audit, explicitly checking for supply chain attacks, `package.json` tampering, and broad logical soundness.
    - **Second Pass (Micro Filter):** If the PR passes the Coordinator, the Builder session performs an independent raw-text audit to catch subtle logic bombs or regressions before execution.
@@ -70,6 +71,7 @@ defence, and knowing the rules up front is what lets a good contribution get in.
    immediate ban. This is the one rule where we assume intent, because none of those happen by
    accident.
 
+<!-- END mirrored-security-rules -->
 ## Branch & PR conventions
 
 - **Branch from `main`** with a typed name (e.g. `feat/`, `fix/`, `docs/`, `chore/`).
