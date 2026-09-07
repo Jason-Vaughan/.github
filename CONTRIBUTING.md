@@ -22,10 +22,11 @@ We operate under a "Zero Trust" model to protect the integrity of our projects a
 hardware. We do not keep our security protocols a secret — transparency is our first line of
 defence, and knowing the rules up front is what lets a good contribution get in.
 
-1. **The Clean Room Reconstruction Standard.** Pull requests from contributors we do not know are
-   reviewed as **raw text diffs**. Maintainers will not check out your branch or run your code on
-   their own machines. If your contribution is valuable we re-implement the logic from scratch on
-   `main` and **credit you as the author**. We merge ideas, not raw bytes.
+1. **The Clean Room Reconstruction Standard (Dual-Key Review).** Pull requests from contributors we do not know are reviewed as **raw text diffs** through a strict dual-key process:
+   - **First Pass (Macro Filter):** The Coordinator session performs the initial security audit, explicitly checking for supply chain attacks, `package.json` tampering, and broad logical soundness.
+   - **Second Pass (Micro Filter):** If the PR passes the Coordinator, the Builder session performs an independent raw-text audit to catch subtle logic bombs or regressions before execution.
+   
+   Maintainers will not check out your branch or run your code on their own machines. If your contribution clears both audits, the Builder re-implements the logic from scratch on `main` and **credits you as the author**. We merge ideas, not raw bytes.
 
    To be precise, because this is a security claim and a vague one is worthless: *continuous
    integration does run your tests* when a repository's workflows are triggered by pull requests.
